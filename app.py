@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import joblib
 
-st.set_page_config(page_title="MandiMind", page_icon="🌾", layout="wide")
+st.set_page_config(page_title="VyaparIQ", page_icon="🌾", layout="wide")
 
 # ── Custom CSS ────────────────────────────────────────────────────────────
 st.markdown("""
@@ -275,7 +275,7 @@ st.markdown(f"""
 <div class="mm-nav">
   <div class="mm-logo">
     <div class="mm-logo-icon">M</div>
-    MandiMind
+    VyaparIQ
   </div>
   <div class="ticker-outer">
     <div class="ticker-track">{ticker_html}</div>
@@ -404,7 +404,7 @@ with c2:
         Historical recovery rate <strong>67.3%</strong> within 3 days"""
     elif signal_paused:
         box_cls, dot_cls, label, color = "pause", "dot-amber", "Signal paused this month", "#854f0b"
-        meta = "Feb and Apr have below 50% recovery rate.<br>MandiMind suppresses signals in these months."
+        meta = "Feb and Apr have below 50% recovery rate.<br>VyaparIQ suppresses signals in these months."
     else:
         box_cls, dot_cls, label, color = "wait", "dot-blue", "Wait — no opportunity today", "#378add"
         meta = f"""Yesterday's price ₹{price_lag1:,.0f}<br>
@@ -494,7 +494,7 @@ st.markdown("</div>", unsafe_allow_html=True)
 # ── Footer ────────────────────────────────────────────────────────────────
 st.markdown("""
 <div class="mm-footer">
-  <span>MandiMind v1.0 — Regular wheat · MP mandis · Nov–May season only</span>
+  <span>VyaparIQ v1.0 — Regular wheat · MP mandis · Nov–May season only</span>
   <span>Data: agmarknet.gov.in</span>
 </div>
 """, unsafe_allow_html=True)
