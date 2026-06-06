@@ -337,7 +337,7 @@ def encode_row(row):
 
 try:
     X_pred          = pd.DataFrame([encode_row(latest)[features]])
-    X_pred          = X_pred.fillna(X_pred.median())
+    X_pred          = X_pred.fillna(35.0)  # fallback: avg MP summer temp
     predicted_price = model.predict(X_pred)[0]
     MAE             = 86.28
 except Exception as e:
