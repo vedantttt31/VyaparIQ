@@ -280,7 +280,7 @@ st.markdown(f"""
   <div class="ticker-outer">
     <div class="ticker-track">{ticker_html}</div>
   </div>
-  <div class="mm-badge">MP Mandis — Nov to May</div>
+  <div class="mm-badge">MP Mandis — Nov to Yesterday</div>
 </div>
 """, unsafe_allow_html=True)
 
