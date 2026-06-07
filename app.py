@@ -306,7 +306,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 # ── Selectors ─────────────────────────────────────────────────────────────
-st.markdown('<div class="selector-container">', unsafe_allow_html=True)
+st.markdown('<div style="padding: 16px 40px 8px 40px">', unsafe_allow_html=True)
 col_d, col_v, col_g, col_empty = st.columns([1,1,1,2])
 
 districts = ["-- Select --"] + sorted(df['district'].astype(str).unique())
