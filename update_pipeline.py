@@ -103,7 +103,7 @@ def clean_new_data(raw_df, temp_value=np.nan):
                  'Price Unit','Arrival Unit']
     df = df.drop(columns=[c for c in drop_cols if c in df.columns])
 
-    for col in ['min_price', 'max_price', 'modal_price']:
+    for col in ['min_price', 'max_price', 'modal_price', 'arrival_qty_mt']:
         df[col] = df[col].astype(str).str.replace(',','').astype(float)
 
     df['date']         = pd.to_datetime(df['date'], format='%d-%m-%Y')
