@@ -1,0 +1,53 @@
+name: VyaparIQ Daily Update
+
+on:
+  schedule:
+    - cron: '30 0 * * *'  # 6:00 AM IST = 00:30 UTC
+  workflow_dispatch:  # allows manual trigger from GitHub UI
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        lfs: true
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        pip install requests pandas numpy scikit-learn xgboost joblib
+
+    - name: Run update pipeline
+      run: |
+        python update_pipeline.py
+
+    - name: Push updated files to Hugging Face
+      env:
+        HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      run: |
+        git config --global user.email "cvedant@iitbhilai.ac.in"
+        git config --global user.name "VyaparIQ Bot"
+        cd /tmp
+        git clone https://Vedantttt31:$HF_TOKEN@huggingface.co/spaces/Vedantttt31/VyaparIQ hf_space
+        cp $GITHUB_WORKSPACE/data_clean.csv hf_space/
+        cp $GITHUB_WORKSPACE/model_lr.pkl hf_space/
+        cp $GITHUB_WORKSPACE/label_encoders.pkl hf_space/
+        cd hf_space
+        git add data_clean.csv model_lr.pkl label_encoders.pkl
+        git commit -m "Auto update $(date '+%Y-%m-%d')" || echo "Nothing to commit"
+        git push
+
+    - name: Push updated files to GitHub
+      run: |
+        git config --global user.email "cvedant@iitbhilai.ac.in"
+        git config --global user.name "VyaparIQ Bot"
+        git add data_clean.csv model_lr.pkl label_encoders.pkl
+        git commit -m "Auto update $(date '+%Y-%m-%d')" || echo "Nothing to commit"
+        git push origin main
