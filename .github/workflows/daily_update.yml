@@ -2,7 +2,7 @@ name: VyaparIQ Daily Update
 
 on:
   schedule:
-    - cron: '30 0 * * *'
+    - cron: '30 8 * * *'  # 2:00 PM IST = 08:30 UTC
   workflow_dispatch:
 
 jobs:
